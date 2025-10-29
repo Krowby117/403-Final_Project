@@ -1,7 +1,8 @@
+using UnityEditorInternal;
 using UnityEngine;
 
 public class ClickScript : MonoBehaviour
-{
+{ 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,8 +15,13 @@ public class ClickScript : MonoBehaviour
 
     }
 
+    // making instance of PlayerInfo
+    public GameObject playerRef;
+    
     private void OnMouseDown()
     {
         Debug.Log("Button clicked");
+        playerRef.GetComponent<PlayerInfo>().increaseScore();
+
     }
 }

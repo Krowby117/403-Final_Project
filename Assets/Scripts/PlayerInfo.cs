@@ -16,6 +16,8 @@ public class PlayerInfo : MonoBehaviour
     // object references
     public TextMeshProUGUI quotaTMP;
     public TextMeshProUGUI unpaidTMP;
+    public TextMeshProUGUI scoreTMP;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -52,5 +54,20 @@ public class PlayerInfo : MonoBehaviour
             unpaidTMP.text = "Unpaid Overtime - " + unpaidOvertime;
             Debug.Log("give player cosmetic");
         }
+    }
+
+    // increases the players curScore and updates tmp
+    public void increaseScore()
+    {
+        curPoints += 1; // currently incrementing by 1
+                        // amount to change with balancing
+        scoreTMP.text = "Score: " + curPoints;
+        Debug.Log("Player score increased by: " + curPoints);
+    }
+
+    // resets player score 
+    public void resetScore()
+    {
+        curPoints = 0;
     }
 }
