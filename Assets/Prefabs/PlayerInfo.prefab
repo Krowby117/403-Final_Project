@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2891382075426521935}
   m_Layer: 0
   m_Name: PlayerInfo
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInfo
   quotaTMP: {fileID: 0}
   unpaidTMP: {fileID: 0}
+  scoreTMP: {fileID: 0}

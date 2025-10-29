@@ -78,4 +78,11 @@ public class PlayerInfo : MonoBehaviour
     {
         curPoints = 0;
     }
+
+    public void upgradeStat(string type, int upgrade)
+    {
+        // probably a switch case the check the upgade type and upgrade 
+        // the corresponding stat based on the given upgrade value
+        Debug.Log("Upgraded " + type + " stat to level " + upgrade);
+    }
 }

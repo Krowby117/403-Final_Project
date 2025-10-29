@@ -8,20 +8,28 @@ public class ShopItem : MonoBehaviour
     public int upgrade_cost = 0;        // how many points are needed to purchase
 
     // upgrade stat information 
-    private string upgrade_type = "";   // what stat is being upgraded
+    public string upgrade_type = "";
     private int upgrade_level = 0;      // will influence how much the corresponding stat will change
 
+    // reference variables
+    private PlayerInfo playerRef;
 
-    private GameObject player_stats;
+    private void Start()
+    {
+        playerRef = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInfo>();
+    }
 
 
     private void OnMouseDown()
     {
         Debug.Log("Upgrade purchased: " + upgrade_name + " for $" + upgrade_cost);
-        // call function to update attribute in player stats
 
         // increase upgrade attributes after purchase
         upgrade_level++;
         upgrade_cost++;
+        
+        
+        // call function to update attribute in player stats
+        playerRef.upgradeStat(upgrade_type, upgrade_level); 
     }
 }
