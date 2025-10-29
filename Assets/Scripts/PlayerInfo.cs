@@ -9,9 +9,9 @@ public class PlayerInfo : MonoBehaviour
     private int unpaidOvertime;     // player's current unpaid overtime
 
     // player stats (stuff that gets upgraded in the shop)
-    int click_modifier = 1;
-    double crit_chance;
-    double crit_bonus;
+    private int click_modifier = 1;
+    private float crit_chance = 0.01f;
+    private float crit_bonus = 1.5f;
 
     // object references
     public TextMeshProUGUI quotaTMP;
@@ -59,8 +59,16 @@ public class PlayerInfo : MonoBehaviour
     // increases the players curScore and updates tmp
     public void increaseScore()
     {
-        curPoints += 1; // currently incrementing by 1
-                        // amount to change with balancing
+        if (Random.Range(0, 1) < crit_chance) // if a random number is less than the crit chance
+        {
+            Debug.Log("Crit");      // CRIT!!!
+            curPoints += (int)Mathf.Round(1 * click_modifier * crit_bonus); // add the click modifyer + 
+        }                                                         // amount to change with balancing
+        else
+        {
+            curPoints += (int)(1f * click_modifier);
+        }
+
         scoreTMP.text = "Score: " + curPoints;
         Debug.Log("Player score increased by: " + curPoints);
     }
