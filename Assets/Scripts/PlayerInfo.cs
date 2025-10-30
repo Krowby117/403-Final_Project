@@ -5,7 +5,7 @@ public class PlayerInfo : MonoBehaviour
 {
     // score / point tracker variables
     private int curPoints = 0;      // player's current score
-    private int quota = 100;        // the current quota goal
+    private int quota = 10;        // the current quota goal
     private int unpaidOvertime;     // player's current unpaid overtime
 
     // player stats (stuff that gets upgraded in the shop)
@@ -29,13 +29,20 @@ public class PlayerInfo : MonoBehaviour
     {
         
     }
+
+    /// <summary>
+    /// addQuota: 
+    /// </summary>
     public void addQuota()
     {
         curPoints += 1;
         quotaTMP.text = "Quota - " + curPoints + "/" + quota;
     }
 
-  
+    /// <summary>
+    /// delQuota:
+    /// </summary>
+    /// <param name="amount"></param>
     public void delQuota(int amount) // for spending points in the shop will probably change at some point
     {
         curPoints -= amount;
@@ -108,4 +115,27 @@ public class PlayerInfo : MonoBehaviour
         // the corresponding stat based on the given upgrade value
         Debug.Log("Upgraded " + type + " stat to level " + upgrade);
     }
+
+    // getters and setters 
+
+    public int getCurPoints()
+    {
+        return curPoints;
+    }
+
+    public void setCurPoints(int newVal)
+    {
+        curPoints = newVal;
+    }
+
+    public int getQuota()
+    {
+        return quota;
+    }
+
+    public void setQuota(int newVal)
+    {
+        quota = newVal; 
+    }
 }
+

@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     // establishing counter for day length 
     // should remain constant throughout game as quota increases 
 
-    private float dayLength = 60f;
+    private float dayLength = 5f; // SET TO 5 FOR TESTING PURPOSES
     private bool countingDown = false; // only true when in MainScene
     private int seconds;
     private int remainingSeconds;
@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
         if (currentScene.name == "MainScene")
         {
             countingDown = true;
-
         }
      
     }
@@ -43,20 +42,30 @@ public class GameManager : MonoBehaviour
         {
             remainingSeconds = Countdown();
 
-            // if time runs out, game ends
-            if (remainingSeconds == 0 )
+            // if time runs out and quota is not met, game ends
+            if (remainingSeconds == 0 && playerReference.getCurPoints() < playerReference.getQuota() )
             {
                 // go to game over scene 
                 SceneManager.LoadScene(1);
                 Debug.Log("Scene changed to GameOver");
             }
 
-
+            else if(remainingSeconds == 0 && playerReference.getCurPoints() >= playerReference.getQuota())
+            {
+                // go to the shop scene 
+                SceneManager.LoadScene(3);
+                Debug.Log("Scene changed to ShopScene");
+            }
         }
 
         // if the score meets the quota then change to unpaid overtime 
-
+        //if (playerReference.getCurPoints() == playerReference.getQuota())
+        //{
+            // implementation of unpaid overtime goes here 
+        //}
         // when the time ends unpaid overtime ends also and goes to shop 
+
+        
     }
 
     /// <summary>
@@ -75,6 +84,5 @@ public class GameManager : MonoBehaviour
         counterTMP.text = "" + seconds;
 
         return seconds;
-
     }
 }
