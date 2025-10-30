@@ -10,28 +10,49 @@ public class GameManager : MonoBehaviour
     // should remain constant throughout game as quota increases 
 
     private float dayLength = 60f;
-    private bool countingDown = false; // not intially counting down on main menu 
+    private bool countingDown = false; // only true when in MainScene
     private int seconds;
+    private int remainingSeconds;
 
     public TextMeshProUGUI counterTMP;
 
-    // keeping track of current scene
-    //Scene currentScene = SceneManager.GetActiveScene();
+    // making an instance of PlayerInfo 
+    //public GameObject playerReference;
+    //playerReference.GetComponent<PlayerInfo>().curPoints;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //if (currentScene.name == "MainScene")
-        //{
-        //    Countdown();
+        // keeping track of current scene
+        Scene currentScene = SceneManager.GetActiveScene();
 
-        //}
+        if (currentScene.name == "MainScene")
+        {
+            countingDown = true;
+
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-      
+        // if we are in the proper scene, the counter begins 
+        if (countingDown)
+        {
+            remainingSeconds = Countdown();
+
+            // if time runs out, game ends
+            if (remainingSeconds == 0 )
+            {
+                // go to game over scene 
+                SceneManager.LoadScene(1);
+                Debug.Log("Scene changed to GameOver");
+            }
+        }
+
+
+
     }
 
     /// <summary>
@@ -40,7 +61,7 @@ public class GameManager : MonoBehaviour
     ///  updates the counter TMP
     /// </summary>
 
-    private void Countdown()
+    private int Countdown()
     {   
         // timer only decreases in the main scene 
         dayLength -= Time.deltaTime;
@@ -49,6 +70,8 @@ public class GameManager : MonoBehaviour
         int seconds = (int)(dayLength % 60);
         Debug.Log("Counter is now: " + seconds);
         counterTMP.text = "" + seconds;
+
+        return seconds;
 
     }
 }
