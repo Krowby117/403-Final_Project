@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class ShopItem : MonoBehaviour
@@ -13,6 +14,9 @@ public class ShopItem : MonoBehaviour
 
     // reference variables
     private PlayerInfo playerRef;
+    public TextMeshProUGUI itemName;
+    public TextMeshProUGUI itemCost;
+    public TextMeshProUGUI itemDesc;
 
     private void Start()
     {
@@ -27,9 +31,16 @@ public class ShopItem : MonoBehaviour
         // increase upgrade attributes after purchase
         upgrade_level++;
         upgrade_cost++;
-        
-        
+
+
         // call function to update attribute in player stats
-        playerRef.upgradeStat(upgrade_type, upgrade_level); 
+        playerRef.upgradeStat(upgrade_type, upgrade_level);
+    }
+
+    void OnMouseOver()
+    {
+        itemName.text = upgrade_name;
+        itemCost.text = "$ " + upgrade_cost;
+        itemDesc.text = upgrade_desc;
     }
 }
