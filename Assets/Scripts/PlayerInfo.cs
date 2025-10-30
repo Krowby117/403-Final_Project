@@ -35,17 +35,28 @@ public class PlayerInfo : MonoBehaviour
         quotaTMP.text = "Quota - " + curPoints + "/" + quota;
     }
 
+  
     public void delQuota(int amount) // for spending points in the shop will probably change at some point
     {
         curPoints -= amount;
         quotaTMP.text = "Quota - " + curPoints + "/" + quota;
     }
     
+    /// <summary>
+    /// addUnpaidOT: takes no arguments, increments unpaidOT by one 
+    /// and updates TMP object accordingly 
+    /// </summary>
     public void addUnpaidOT()
     {
         unpaidOvertime += 1;
         unpaidTMP.text = "Unpaid Overtime - " + unpaidOvertime;
     }
+
+    /// <summary>
+    /// removeUnpaidOT: takes int, removes int from unpaidOT as long as 
+    /// unpaidOT is larger than the int. Updates TMP object accordingly
+    /// </summary>
+    /// <param name="cost"></param>
     public void removeUnpaidOT(int cost)
     {
         if (unpaidOvertime >= cost)
@@ -56,7 +67,10 @@ public class PlayerInfo : MonoBehaviour
         }
     }
 
-    // increases the players curScore and updates tmp
+    /// <summary>
+    /// increaseScore: increases the users score while accounting 
+    /// for crit chance. Updates TMP object accordingly
+    /// </summary>
     public void increaseScore()
     {
         if (Random.Range(0, 1) < crit_chance) // if a random number is less than the crit chance
@@ -73,12 +87,21 @@ public class PlayerInfo : MonoBehaviour
         Debug.Log("Player score increased by: " + curPoints);
     }
 
-    // resets player score 
+    /// <summary>
+    /// resetScore: sets the players score to zero. 
+    /// No TMP object update currently.
+    /// </summary>
     public void resetScore()
     {
         curPoints = 0;
     }
 
+    /// <summary>
+    /// upgradeStat: takes in string and int, upgrades stat 
+    /// specified as string by value specified by int. As of now.
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="upgrade"></param>
     public void upgradeStat(string type, int upgrade)
     {
         // probably a switch case the check the upgade type and upgrade 

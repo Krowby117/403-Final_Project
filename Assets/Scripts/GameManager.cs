@@ -4,6 +4,7 @@ using TMPro;
 //using UnityEditor.SearchService;
 using UnityEngine.SceneManagement;
 
+
 public class GameManager : MonoBehaviour
 {
     // establishing counter for day length 
@@ -17,13 +18,12 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI counterTMP;
 
     // making an instance of PlayerInfo 
-    //public GameObject playerReference;
-    //playerReference.GetComponent<PlayerInfo>().curPoints;
-
-
+    public PlayerInfo playerReference;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
         // keeping track of current scene
         Scene currentScene = SceneManager.GetActiveScene();
 
@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
             countingDown = true;
 
         }
+     
     }
 
     // Update is called once per frame
@@ -49,10 +50,13 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene(1);
                 Debug.Log("Scene changed to GameOver");
             }
+
+
         }
 
+        // if the score meets the quota then change to unpaid overtime 
 
-
+        // when the time ends unpaid overtime ends also and goes to shop 
     }
 
     /// <summary>
@@ -60,7 +64,6 @@ public class GameManager : MonoBehaviour
     ///  only counts down if countingDown is true 
     ///  updates the counter TMP
     /// </summary>
-
     private int Countdown()
     {   
         // timer only decreases in the main scene 

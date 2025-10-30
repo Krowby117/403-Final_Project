@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   counterTMP: {fileID: 704650131}
+  playerReference: {fileID: 1590726722}
 --- !u!4 &478158900
 Transform:
   m_ObjectHideFlags: 0
