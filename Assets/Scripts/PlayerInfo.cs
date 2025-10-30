@@ -5,7 +5,7 @@ public class PlayerInfo : MonoBehaviour
 {
     // score / point tracker variables
     private int curPoints = 0;      // player's current score
-    private int quota = 10;        // the current quota goal
+    private int quota = 100;       // the current quota goal
     private int unpaidOvertime;     // player's current unpaid overtime
 
     // player stats (stuff that gets upgraded in the shop)

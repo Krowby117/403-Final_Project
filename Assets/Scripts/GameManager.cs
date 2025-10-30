@@ -4,13 +4,15 @@ using TMPro;
 //using UnityEditor.SearchService;
 using UnityEngine.SceneManagement;
 
-
+/// <summary>
+/// GameManager: class which handles scene transitions and the 
+/// </summary>
 public class GameManager : MonoBehaviour
 {
     // establishing counter for day length 
     // should remain constant throughout game as quota increases 
 
-    private float dayLength = 5f; // SET TO 5 FOR TESTING PURPOSES
+    private float dayLength = 60f;
     private bool countingDown = false; // only true when in MainScene
     private int seconds;
     private int remainingSeconds;
@@ -24,6 +26,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
 
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         // keeping track of current scene
         Scene currentScene = SceneManager.GetActiveScene();
 
@@ -31,12 +38,6 @@ public class GameManager : MonoBehaviour
         {
             countingDown = true;
         }
-     
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         // if we are in the proper scene, the counter begins 
         if (countingDown)
         {
@@ -46,14 +47,14 @@ public class GameManager : MonoBehaviour
             if (remainingSeconds == 0 && playerReference.getCurPoints() < playerReference.getQuota() )
             {
                 // go to game over scene 
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(3);
                 Debug.Log("Scene changed to GameOver");
             }
 
             else if(remainingSeconds == 0 && playerReference.getCurPoints() >= playerReference.getQuota())
             {
                 // go to the shop scene 
-                SceneManager.LoadScene(3);
+                SceneManager.LoadScene(2);
                 Debug.Log("Scene changed to ShopScene");
             }
         }
