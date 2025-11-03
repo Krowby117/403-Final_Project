@@ -113,7 +113,20 @@ public class PlayerInfo : MonoBehaviour
     {
         // probably a switch case the check the upgade type and upgrade 
         // the corresponding stat based on the given upgrade value
-        Debug.Log("Upgraded " + type + " stat to level " + upgrade);
+        switch (type)
+        {
+            case "0":
+                // Code to execute if expression matches value1
+                break;
+            case "1":
+                // Code to execute if expression matches value2
+                break;
+            // ... more cases
+            default:
+                // Code to execute if no case matches (optional)
+                Debug.Log("Upgraded " + type + " stat to level " + upgrade);
+                break;
+        }
     }
 
     // getters and setters 
