@@ -12,6 +12,9 @@ public class PlayerInfo : MonoBehaviour
     private int click_modifier = 1;
     private float crit_chance = 0.01f;
     private float crit_bonus = 1.5f;
+    public int critC_level = 0;
+    public int mod_level = 0;
+    public int critB_level = 0;
 
     // object references
     public TextMeshProUGUI quotaTMP;
@@ -109,19 +112,21 @@ public class PlayerInfo : MonoBehaviour
     /// </summary>
     /// <param name="type"></param>
     /// <param name="upgrade"></param>
-    public void upgradeStat(string type, int upgrade)
+    public void upgradeStat(string type, double upgrade)
     {
         // probably a switch case the check the upgade type and upgrade 
         // the corresponding stat based on the given upgrade value
         switch (type)
         {
-            case "0":
-                // Code to execute if expression matches value1
+            case "modifier":
+                mod_level++;
                 break;
-            case "1":
-                // Code to execute if expression matches value2
+            case "crit_bonus":
+                critC_level++;
                 break;
-            // ... more cases
+            case "crit_chance":
+                critB_level++;
+                break;
             default:
                 // Code to execute if no case matches (optional)
                 Debug.Log("Upgraded " + type + " stat to level " + upgrade);
