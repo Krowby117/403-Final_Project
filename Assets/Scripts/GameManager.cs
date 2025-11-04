@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     {
         playerReference = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInfo>();
         playerReference.addDay();
-        playerReference.addDay();
+
     }
 
     // Update is called once per frame
