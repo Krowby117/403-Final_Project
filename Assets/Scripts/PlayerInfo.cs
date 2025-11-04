@@ -1,12 +1,13 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerInfo : MonoBehaviour
 {
     // score / point tracker variables
     private int curPoints = 0;      // player's current score
     private int quota = 0;       // the current quota goal
-    private int unpaidOvertime;     // player's current unpaid overtime
+    private int unpaidOvertime = 0;     // player's current unpaid overtime
     private int day = 0;
 
     // player stats (stuff that gets upgraded in the shop)
@@ -18,17 +19,31 @@ public class PlayerInfo : MonoBehaviour
     public int critB_level = 0;
 
     // object references
-    public TextMeshProUGUI quotaTMP;
-    public TextMeshProUGUI unpaidTMP;
-    public TextMeshProUGUI dayTMP;
+    private TextMeshProUGUI quotaTMP;
+    private TextMeshProUGUI unpaidTMP;
+    private TextMeshProUGUI dayTMP;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
-        DontDestroyOnLoad(this);    
+        DontDestroyOnLoad(this);
+        SceneManager.sceneLoaded += SceneLoaded;
     }
 
-
+    void SceneLoaded(Scene newScene, LoadSceneMode loadMode)
+    {
+        Debug.Log(SceneManager.GetActiveScene().name);
+        if (SceneManager.GetActiveScene().name == "MainScene")
+        {
+            dayTMP = GameObject.Find("DayText").GetComponent<TextMeshProUGUI>();
+            quotaTMP = GameObject.Find("QuotaText").GetComponent<TextMeshProUGUI>();
+        }
+        else
+        {
+            dayTMP = null;
+            quotaTMP = null;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -85,7 +100,7 @@ public class PlayerInfo : MonoBehaviour
     /// </summary>
     public void increaseScore()
     {
-        if (Random.Range(0, 1) < crit_chance) // if a random number is less than the crit chance
+        if (Random.value < crit_chance) // if a random number is less than the crit chance
         {
             Debug.Log("Crit");      // CRIT!!!
             curPoints += (int)Mathf.Round(1 * click_modifier * crit_bonus); // add the click modifyer + 
