@@ -5,8 +5,9 @@ public class PlayerInfo : MonoBehaviour
 {
     // score / point tracker variables
     private int curPoints = 0;      // player's current score
-    private int quota = 100;       // the current quota goal
+    private int quota = 0;       // the current quota goal
     private int unpaidOvertime;     // player's current unpaid overtime
+    private int day = 0;
 
     // player stats (stuff that gets upgraded in the shop)
     private int click_modifier = 1;
@@ -19,13 +20,14 @@ public class PlayerInfo : MonoBehaviour
     // object references
     public TextMeshProUGUI quotaTMP;
     public TextMeshProUGUI unpaidTMP;
-    public TextMeshProUGUI scoreTMP;
+    public TextMeshProUGUI dayTMP;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(this);    
     }
+
 
     // Update is called once per frame
     void Update()
@@ -93,7 +95,7 @@ public class PlayerInfo : MonoBehaviour
             curPoints += (int)(1f * click_modifier);
         }
 
-        scoreTMP.text = "Score: " + curPoints;
+        quotaTMP.text = "Quota: " + curPoints + " / " + quota;
         Debug.Log("Player score increased by: " + curPoints);
     }
 
@@ -155,5 +157,20 @@ public class PlayerInfo : MonoBehaviour
     {
         quota = newVal; 
     }
+
+    public int getDay() 
+    { 
+        return day; 
+    }
+
+    public void addDay()
+    {
+        day++;
+        dayTMP.text = "Day: " + day;
+        quota = 100 * day * day;
+        quotaTMP.text = "Quota: " + curPoints + " / " + quota;
+    }
+
+    
 }
 
