@@ -1,5 +1,6 @@
 //using System;
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,7 +14,7 @@ public class PlayerInfo : MonoBehaviour
     private int day = 0;
 
     // player stats (stuff that gets upgraded in the shop)
-    private int click_modifier = 1;
+    private float click_modifier = 1;
     private float crit_chance = 0.01f;
     private float crit_bonus = 1.5f;
     public int critC_level = 0;
@@ -216,6 +217,23 @@ public class PlayerInfo : MonoBehaviour
         quotaTMP.text = "Quota: " + curPoints + " / " + quota;
     }
 
-    
+    public IEnumerator multiplyScore()
+    {
+        Debug.Log("ADDING MULTIPLIER TO SCORE");
+        float mult = 0;
+        if (UnityEngine.Random.value > 0.5f)
+        {
+            mult = UnityEngine.Random.value + 1;
+        }
+        else
+        {
+            mult = (UnityEngine.Random.value * .5f) + .5f; 
+        }
+        Debug.Log("Multiplier = " + mult);
+        click_modifier += mult;
+        yield return new WaitForSeconds(5);
+        click_modifier -= mult;
+        Debug.Log("REMOVING MULT FROM SCORE");
+    }
 }
 

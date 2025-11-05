@@ -10,6 +10,7 @@ public class MultButton : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        //playerRef.GetComponent<PlayerInfo>().StartCoroutine([NAME_OF_METHOD]);
+        StartCoroutine(playerRef.GetComponent<PlayerInfo>().multiplyScore());
+        gameObject.SetActive(false);
     }
 }
