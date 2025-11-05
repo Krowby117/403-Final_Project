@@ -1,4 +1,5 @@
 //using System;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -110,7 +111,7 @@ public class PlayerInfo : MonoBehaviour
     public void increaseScore()
     {
         if (curPoints < quota){
-            if (Random.value < crit_chance) // if a random number is less than the crit chance
+            if (UnityEngine.Random.value < crit_chance) // if a random number is less than the crit chance
             {
                 Debug.Log("Crit");      // CRIT!!!
                 curPoints += (int)Mathf.Round(1 * click_modifier * crit_bonus); // add the click modifyer + 
@@ -211,7 +212,7 @@ public class PlayerInfo : MonoBehaviour
     {
         day++;
         dayTMP.text = "Day: " + day;
-        quota = 100 * day * day;
+        quota = (int)(100 * Math.Pow(Math.E, day-1));
         quotaTMP.text = "Quota: " + curPoints + " / " + quota;
     }
 
