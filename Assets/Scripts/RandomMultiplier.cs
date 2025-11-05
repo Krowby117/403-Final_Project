@@ -1,10 +1,8 @@
 using System.Collections;
-using System.Threading;
 using UnityEngine;
 
 public class RandomMultiplier : MonoBehaviour
 {
-    private float multiplier;
     private float timer;
     private bool isActive = false;
     private bool isRunning = false;
@@ -17,8 +15,6 @@ public class RandomMultiplier : MonoBehaviour
     void Start()
     {
         button.SetActive(false);
-        Debug.Log("getting new mult");
-        getMult();
     }
     // Update is called once per frame
     void Update()
@@ -44,7 +40,6 @@ public class RandomMultiplier : MonoBehaviour
         button.SetActive(true);
         yield return new WaitForSeconds(10);
         button.SetActive(false);
-        getMult();
     }
 
     IEnumerator tryForButton()
@@ -58,17 +53,5 @@ public class RandomMultiplier : MonoBehaviour
             isActive = true;
         }
         isRunning = false;
-    }
-    private void getMult()
-    {
-        if (Random.Range(0, 2) == 0)
-        {
-            multiplier = Random.value * .5f;
-        }
-        else
-        {
-            multiplier = Random.value + 1;
-        }
-        Debug.Log(multiplier);
     }
 }
