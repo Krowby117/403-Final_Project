@@ -129,7 +129,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5776427594221097992, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
       propertyPath: m_Name
-      value: ShopItem
+      value: CritB
       objectReference: {fileID: 0}
     - target: {fileID: 7209094016796101319, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
       propertyPath: m_Pivot.x
@@ -229,11 +229,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8794902321344456740, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
       propertyPath: upgrade_desc
-      value: Testing for upgrade 2
+      value: Increases the score you get when you get a Critical hit on the button
       objectReference: {fileID: 0}
     - target: {fileID: 8794902321344456740, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
       propertyPath: upgrade_name
-      value: Test Upgrade 2
+      value: Critical Hit bonus
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794902321344456740, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
+      propertyPath: upgrade_type
+      value: crit_bonus
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -758,7 +762,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5776427594221097992, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
       propertyPath: m_Name
-      value: ShopItem
+      value: Mult
       objectReference: {fileID: 0}
     - target: {fileID: 7209094016796101319, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
       propertyPath: m_Pivot.x
@@ -858,11 +862,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8794902321344456740, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
       propertyPath: upgrade_desc
-      value: Testing for upgrade 3
+      value: Increases the score each button press gives you
       objectReference: {fileID: 0}
     - target: {fileID: 8794902321344456740, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
       propertyPath: upgrade_name
-      value: Test Upgrade 3
+      value: Multiplier
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794902321344456740, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
+      propertyPath: upgrade_type
+      value: modifier
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1366,67 +1374,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1592833015
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 66242891615089851, guid: 1f0b0a5fd76772442a7a702b7962eb2a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 66242891615089851, guid: 1f0b0a5fd76772442a7a702b7962eb2a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 66242891615089851, guid: 1f0b0a5fd76772442a7a702b7962eb2a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 66242891615089851, guid: 1f0b0a5fd76772442a7a702b7962eb2a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 66242891615089851, guid: 1f0b0a5fd76772442a7a702b7962eb2a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 66242891615089851, guid: 1f0b0a5fd76772442a7a702b7962eb2a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 66242891615089851, guid: 1f0b0a5fd76772442a7a702b7962eb2a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 66242891615089851, guid: 1f0b0a5fd76772442a7a702b7962eb2a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 66242891615089851, guid: 1f0b0a5fd76772442a7a702b7962eb2a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 66242891615089851, guid: 1f0b0a5fd76772442a7a702b7962eb2a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4625185343600220025, guid: 1f0b0a5fd76772442a7a702b7962eb2a, type: 3}
-      propertyPath: m_Name
-      value: PlayerInfo
-      objectReference: {fileID: 0}
-    - target: {fileID: 4625185343600220025, guid: 1f0b0a5fd76772442a7a702b7962eb2a, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1f0b0a5fd76772442a7a702b7962eb2a, type: 3}
 --- !u!1 &1634320315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,7 +1520,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5776427594221097992, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
       propertyPath: m_Name
-      value: ShopItem
+      value: CritC
       objectReference: {fileID: 0}
     - target: {fileID: 7209094016796101319, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
       propertyPath: m_Pivot.x
@@ -1669,7 +1616,15 @@ PrefabInstance:
       objectReference: {fileID: 1634320317}
     - target: {fileID: 8794902321344456740, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
       propertyPath: upgrade_desc
-      value: Testing for upgrade 1
+      value: Upgrades Your likelyhood to get a critical hit when clicking the button
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794902321344456740, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
+      propertyPath: upgrade_name
+      value: Critical Hit Chance
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794902321344456740, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
+      propertyPath: upgrade_type
+      value: crit_chance
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1681,7 +1636,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 524013896}
-  - {fileID: 1592833015}
   - {fileID: 1235390347}
   - {fileID: 1522830384}
   - {fileID: 725532426}

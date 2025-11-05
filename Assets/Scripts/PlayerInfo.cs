@@ -23,31 +23,38 @@ public class PlayerInfo : MonoBehaviour
     private TextMeshProUGUI unpaidTMP;
     private TextMeshProUGUI dayTMP;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    //move the player info object into a folder that will not be destroyed on scene transitions and initialize the SceneLoaded function
     private void Awake()
     {
+        
         DontDestroyOnLoad(this);
         SceneManager.sceneLoaded += SceneLoaded;
     }
 
+    // This activates whenever a new Scene is loaded that PlayerInfo exists in. I use it to update the upgrade modifiers and to find TMP objects
     void SceneLoaded(Scene newScene, LoadSceneMode loadMode)
     {
         Debug.Log(SceneManager.GetActiveScene().name);
+        // if loading the main game scene, do these actions
         if (SceneManager.GetActiveScene().name == "MainScene")
         {
             dayTMP = GameObject.Find("DayText").GetComponent<TextMeshProUGUI>();
             quotaTMP = GameObject.Find("QuotaText").GetComponent<TextMeshProUGUI>();
+            unpaidTMP = GameObject.Find("UnpaidText").GetComponent<TextMeshProUGUI>();
+
+            click_modifier = 1 + mod_level;
+            crit_chance = .01f + (critC_level * .01f);
+            crit_bonus = 1.5f + (critB_level * .1f);
+            unpaidTMP.text = "Unpaid Overtime: " + unpaidOvertime;
         }
+        // You can add else ifs if you want to reference different TMP objects from the store
+        // else if (SceneManager.GetActiveScene().name == "ShopScene")
         else
         {
             dayTMP = null;
             quotaTMP = null;
+            unpaidTMP = null;
         }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     /// <summary>
@@ -100,18 +107,24 @@ public class PlayerInfo : MonoBehaviour
     /// </summary>
     public void increaseScore()
     {
-        if (Random.value < crit_chance) // if a random number is less than the crit chance
-        {
-            Debug.Log("Crit");      // CRIT!!!
-            curPoints += (int)Mathf.Round(1 * click_modifier * crit_bonus); // add the click modifyer + 
-        }                                                         // amount to change with balancing
+        if (curPoints < quota){
+            if (Random.value < crit_chance) // if a random number is less than the crit chance
+            {
+                Debug.Log("Crit");      // CRIT!!!
+                curPoints += (int)Mathf.Round(1 * click_modifier * crit_bonus); // add the click modifyer + 
+            }                                                         // amount to change with balancing
+            else
+            {
+                curPoints += (int)(1f * click_modifier);
+            }
+            quotaTMP.text = "Quota: " + curPoints + " / " + quota;
+            Debug.Log("Player score increased by: " + curPoints);
+        }
         else
         {
-            curPoints += (int)(1f * click_modifier);
+            unpaidOvertime += 1;
+            unpaidTMP.text = "Unpaid Overtime: " + unpaidOvertime;
         }
-
-        quotaTMP.text = "Quota: " + curPoints + " / " + quota;
-        Debug.Log("Player score increased by: " + curPoints);
     }
 
     /// <summary>
@@ -137,12 +150,15 @@ public class PlayerInfo : MonoBehaviour
         {
             case "modifier":
                 mod_level++;
+                Debug.Log("Upgraded Multiplier");
                 break;
             case "crit_bonus":
-                critC_level++;
+                critB_level++;
+                Debug.Log("Upgraded Crit Bonus");
                 break;
             case "crit_chance":
-                critB_level++;
+                critC_level++;
+                Debug.Log("Upgraded Crit Chance");
                 break;
             default:
                 // Code to execute if no case matches (optional)
@@ -150,14 +166,16 @@ public class PlayerInfo : MonoBehaviour
                 break;
         }
     }
-
+    // Transitions to mainScene whenever Called
+    public void StartGame()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
     // getters and setters 
-
     public int getCurPoints()
     {
         return curPoints;
     }
-
     public void setCurPoints(int newVal)
     {
         curPoints = newVal;
@@ -166,11 +184,6 @@ public class PlayerInfo : MonoBehaviour
     public int getQuota()
     {
         return quota;
-    }
-
-    public void setQuota(int newVal)
-    {
-        quota = newVal; 
     }
 
     public int getDay() 

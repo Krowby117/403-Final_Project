@@ -47,15 +47,19 @@ public class ShopItem : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("Upgrade purchased: " + upgrade_name + " for $" + upgrade_cost);
+        if (playerRef.getCurPoints() >= upgrade_cost)
+        {
+            playerRef.setCurPoints(playerRef.getCurPoints() - (int) upgrade_cost);
+            Debug.Log("Upgrade purchased: " + upgrade_name + " for $" + upgrade_cost);
 
-        // increase upgrade attributes after purchase
-        upgrade_level++;
-        upgrade_cost = math.floor(math.pow(2.71828, upgrade_level-1));
+            // increase upgrade attributes after purchase
+            upgrade_level++;
+            upgrade_cost = math.floor(math.pow(2.71828, upgrade_level - 1));
 
 
-        // call function to update attribute in player stats
-        playerRef.upgradeStat(upgrade_type, upgrade_level);
+            // call function to update attribute in player stats
+            playerRef.upgradeStat(upgrade_type, upgrade_level);
+        }
     }
 
     void OnMouseOver()
