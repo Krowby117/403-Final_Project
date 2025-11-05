@@ -1,5 +1,6 @@
 using TMPro;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShopItem : MonoBehaviour
@@ -40,6 +41,10 @@ public class ShopItem : MonoBehaviour
                 upgrade_level = playerRef.critC_level;
                 upgrade_cost = math.floor(math.pow(2.71828, upgrade_level-1));
                 break;
+            case "cosmetic":
+                // pull the upgrade level from player info
+                upgrade_level = playerRef.critC_level;
+                break;
             default: break;
         }
     }
@@ -49,13 +54,27 @@ public class ShopItem : MonoBehaviour
     {
         if (playerRef.getCurPoints() >= upgrade_cost)
         {
-            playerRef.setCurPoints(playerRef.getCurPoints() - (int) upgrade_cost);
+            playerRef.setCurPoints(playerRef.getCurPoints() - (int)upgrade_cost);
             Debug.Log("Upgrade purchased: " + upgrade_name + " for $" + upgrade_cost);
 
             // increase upgrade attributes after purchase
             upgrade_level++;
             upgrade_cost = math.floor(math.pow(2.71828, upgrade_level - 1));
 
+
+            // call function to update attribute in player stats
+            playerRef.upgradeStat(upgrade_type, upgrade_level);
+        }
+        
+        if ((playerRef.getCurOvertime() >= upgrade_cost) && (upgrade_type == "cosmetic") && (upgrade_level == 0))
+        {
+            playerRef.setCurOvertime(playerRef.getCurOvertime() - (int)upgrade_cost);
+            Debug.Log("Cosmetic purchased: " + upgrade_name + " for $" + upgrade_cost);
+
+            // increase upgrade attributes after purchase
+            upgrade_level++;
+            upgrade_cost = 1000000000;
+            upgrade_desc = "Already purhcased! Limit: 1 per customer.";
 
             // call function to update attribute in player stats
             playerRef.upgradeStat(upgrade_type, upgrade_level);

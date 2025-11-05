@@ -1,3 +1,4 @@
+//using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,6 +16,7 @@ public class PlayerInfo : MonoBehaviour
     private float crit_chance = 0.01f;
     private float crit_bonus = 1.5f;
     public int critC_level = 0;
+    public int cosmetic = 0;
     public int mod_level = 0;
     public int critB_level = 0;
 
@@ -160,6 +162,10 @@ public class PlayerInfo : MonoBehaviour
                 critC_level++;
                 Debug.Log("Upgraded Crit Chance");
                 break;
+            case "cosmetic":
+                cosmetic++;
+                Debug.Log("Purchsaed Cosmetic");
+                break;
             default:
                 // Code to execute if no case matches (optional)
                 Debug.Log("Upgraded " + type + " stat to level " + upgrade);
@@ -179,6 +185,16 @@ public class PlayerInfo : MonoBehaviour
     public void setCurPoints(int newVal)
     {
         curPoints = newVal;
+    }
+
+    public int getCurOvertime()
+    {
+        return unpaidOvertime;
+    }
+
+    public void setCurOvertime(int newVal)
+    {
+        unpaidOvertime = newVal;
     }
 
     public int getQuota()
