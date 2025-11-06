@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 667ab16e00f52634c8fc649dcc918217
+guid: bc5231a7a584c2249a09f824f8d405c4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -970781658568194063
-    second: Timeline 1_0006_0
+      213: 1944284416077275779
+    second: ButtonFrame1_0
+  - first:
+      213: 2396991628959218641
+    second: ButtonFrame1_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,11 +49,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 9
+  spritePivot: {x: 0.50139385, y: 0.41660786}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -75,7 +78,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,23 +103,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Button6
+      name: ButtonFrame1_0
       rect:
         serializedVersion: 2
-        x: 877
-        y: 427
-        width: 164
-        height: 102
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 753
+        y: 748
+        width: 205
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1f7049699371782f0800000000000000
-      internalID: -970781658568194063
+      spriteID: 3822d9a006c7bfa10800000000000000
+      internalID: 1944284416077275779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonFrame1_1
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 540
+        width: 440
+        height: 313
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1dbf2bdcf23d34120800000000000000
+      internalID: 2396991628959218641
       vertices: []
       indices: 
       edges: []
@@ -125,8 +150,8 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ec01d618612d184459f3aeb12e346946
-    internalID: 0
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
@@ -135,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Button6: -970781658568194063
+      ButtonFrame1_0: 1944284416077275779
+      ButtonFrame1_1: 2396991628959218641
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
