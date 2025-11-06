@@ -34,6 +34,10 @@ public class RandomMultiplier : MonoBehaviour
         timer += Time.deltaTime;
     }
     
+    public void activateButtonMult()
+    {
+        
+    }
     IEnumerator buttonAvailable()
     {
         timer = 0;
@@ -54,4 +58,5 @@ public class RandomMultiplier : MonoBehaviour
         }
         isRunning = false;
     }
+
 }
