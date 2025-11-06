@@ -36,7 +36,7 @@ public class RandomMultiplier : MonoBehaviour
     
     public void activateButtonMult()
     {
-        
+        StartCoroutine(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInfo>().multiplyScore());
     }
     IEnumerator buttonAvailable()
     {
