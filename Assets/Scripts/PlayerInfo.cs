@@ -121,6 +121,8 @@ public class PlayerInfo : MonoBehaviour
             {
                 curPoints += (int)(1f * click_modifier);
             }
+
+            curPoints = System.Math.Min(curPoints, quota);
             quotaTMP.text = "Quota: " + curPoints + " / " + quota;
             Debug.Log("Player score increased by: " + curPoints);
         }
