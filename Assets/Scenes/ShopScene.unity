@@ -244,6 +244,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8794902321344456740, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
+      propertyPath: funds
+      value: 
+      objectReference: {fileID: 957255885}
+    - target: {fileID: 8794902321344456740, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
       propertyPath: itemCost
       value: 
       objectReference: {fileID: 523435414}
@@ -910,6 +914,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8794902321344456740, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
+      propertyPath: funds
+      value: 
+      objectReference: {fileID: 957255885}
+    - target: {fileID: 8794902321344456740, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
       propertyPath: itemCost
       value: 
       objectReference: {fileID: 523435414}
@@ -1506,6 +1514,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8794902321344456740, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
+      propertyPath: funds
+      value: 
+      objectReference: {fileID: 957255885}
+    - target: {fileID: 8794902321344456740, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
       propertyPath: itemCost
       value: 
       objectReference: {fileID: 523435414}
@@ -1519,11 +1531,11 @@ PrefabInstance:
       objectReference: {fileID: 1634320317}
     - target: {fileID: 8794902321344456740, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
       propertyPath: upgrade_cost
-      value: 1000000000
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 8794902321344456740, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
       propertyPath: upgrade_desc
-      value: Use your unpaid overtime to buy a MrDr. Bowman statue for your workspace!
+      value: Use your unpaid overtime to buy a cooler lighting system for your cubicle.
       objectReference: {fileID: 0}
     - target: {fileID: 8794902321344456740, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
       propertyPath: upgrade_name
@@ -2074,6 +2086,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8794902321344456740, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
+      propertyPath: funds
+      value: 
+      objectReference: {fileID: 957255885}
     - target: {fileID: 8794902321344456740, guid: dfd0846bd20734f03b35867fca2e8e44, type: 3}
       propertyPath: itemCost
       value: 

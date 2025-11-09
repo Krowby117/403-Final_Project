@@ -48,7 +48,13 @@ public class GameManager : MonoBehaviour
             // if the player has purchased the cosmetic, enable it
             if (hasCosmetic)
             {
-                
+                cosmetic = GameObject.FindGameObjectWithTag("Cosmetic");
+                cosmetic.transform.Find("RaysOfLight").GetComponent<ParticleSystem>().Play();
+            }
+            else
+            {
+                //cosmetic = GameObject.FindGameObjectWithTag("Cosmetic");
+                cosmetic.transform.Find("RaysOfLight").GetComponent<ParticleSystem>().Stop();
             }
         }
         // if we are in the proper scene, the counter begins 
