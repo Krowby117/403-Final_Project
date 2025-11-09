@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7209094016796101319}
   - component: {fileID: 595317184536402055}
   - component: {fileID: 8794902321344456740}
-  - component: {fileID: 5065822450695093379}
   - component: {fileID: 4670310099049474556}
+  - component: {fileID: -792421987711000293}
   m_Layer: 0
   m_Name: ShopItem
   m_TagString: Untagged
@@ -116,8 +116,16 @@ MonoBehaviour:
   itemName: {fileID: 0}
   itemCost: {fileID: 0}
   itemDesc: {fileID: 0}
---- !u!58 &5065822450695093379
-CircleCollider2D:
+--- !u!222 &4670310099049474556
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5776427594221097992}
+  m_CullTransparentMesh: 1
+--- !u!70 &-792421987711000293
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -151,12 +159,5 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
---- !u!222 &4670310099049474556
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5776427594221097992}
-  m_CullTransparentMesh: 1
+  m_Size: {x: 1, y: 0.8828125}
+  m_Direction: 0
