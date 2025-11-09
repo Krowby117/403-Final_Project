@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        dayLength += (int) Time.realtimeSinceStartup;
         playerReference = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInfo>();
         cosmetic = GameObject.FindGameObjectWithTag("Cosmetic");
         playerReference.addDay();
@@ -56,14 +57,14 @@ public class GameManager : MonoBehaviour
             remainingSeconds = Countdown();
 
             // if time runs out and quota is not met, game ends
-            if (remainingSeconds == 0 && playerReference.getCurPoints() < playerReference.getQuota())
+            if (remainingSeconds <= 0 && playerReference.getCurPoints() < playerReference.getQuota())
             {
                 // go to game over scene 
                 SceneManager.LoadScene("GameOver");
                 Debug.Log("Scene changed to GameOver");
             }
 
-            else if (remainingSeconds == 0 && playerReference.getCurPoints() >= playerReference.getQuota())
+            else if (remainingSeconds <= 0 && playerReference.getCurPoints() >= playerReference.getQuota())
             {
                 // go to the shop scene 
                 SceneManager.LoadScene("ShopScene");
@@ -88,10 +89,10 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private int Countdown()
     {
-        int seconds = (int)(dayLength - Time.timeSinceLevelLoad);
+        int seconds = (int)(dayLength - Time.realtimeSinceStartup);
         counterTMP.text = "" + seconds;
 
-        return (int) dayLength - (int) Time.timeSinceLevelLoad;
+        return (int) dayLength - (int) Time.realtimeSinceStartup;
     }
 
     
