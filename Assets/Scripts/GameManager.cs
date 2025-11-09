@@ -87,16 +87,11 @@ public class GameManager : MonoBehaviour
     ///  updates the counter TMP
     /// </summary>
     private int Countdown()
-    {   
-        // timer only decreases in the main scene 
-        dayLength -= Time.deltaTime;
-
-        // converting to seconds and displaying 
-        int seconds = (int)(dayLength % 60);
-        Debug.Log("Counter is now: " + seconds);
+    {
+        int seconds = (int)(dayLength - Time.timeSinceLevelLoad);
         counterTMP.text = "" + seconds;
 
-        return seconds;
+        return (int) dayLength - (int) Time.timeSinceLevelLoad;
     }
 
     

@@ -19,6 +19,7 @@ public class ClickScript : MonoBehaviour
     private void OnMouseDown()
     {
         Debug.Log("Button clicked");
+        gameObject.GetComponent<Animator>().SetTrigger("OnClick");
         playerRef.GetComponent<PlayerInfo>().increaseScore();
 
     }
