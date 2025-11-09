@@ -21,6 +21,7 @@ public class PlayerInfo : MonoBehaviour
     public int cosmetic = 0;
     public int mod_level = 0;
     public int critB_level = 0;
+    private int modifying = 0;
 
     // object references
     private TextMeshProUGUI quotaTMP;
@@ -48,7 +49,7 @@ public class PlayerInfo : MonoBehaviour
             quotaTMP = GameObject.Find("QuotaText").GetComponent<TextMeshProUGUI>();
             unpaidTMP = GameObject.Find("UnpaidText").GetComponent<TextMeshProUGUI>();
 
-            click_modifier = 1 + mod_level;
+            click_modifier = 1 + modifying;
             crit_chance = .01f + (critC_level * .01f);
             crit_bonus = 1.5f + (critB_level * .1f);
             unpaidTMP.text = "Unpaid Overtime: " + unpaidOvertime;
@@ -158,6 +159,14 @@ public class PlayerInfo : MonoBehaviour
         {
             case "modifier":
                 mod_level++;
+                if (modifying == 0 || modifying == 1)
+                {
+                    modifying++;
+                }
+                else
+                {
+                    modifying = modifying * 2;
+                }
                 Debug.Log("Upgraded Multiplier");
                 break;
             case "crit_bonus":
