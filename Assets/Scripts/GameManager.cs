@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI counterTMP;
 
+    public bool hasCosmetic = false;
+    private GameObject cosmetic;
+
     // making an instance of PlayerInfo 
     public PlayerInfo playerReference;
     
@@ -25,6 +28,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         playerReference = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInfo>();
+        cosmetic = GameObject.FindGameObjectWithTag("Cosmetic");
         playerReference.addDay();
 
     }
@@ -37,7 +41,14 @@ public class GameManager : MonoBehaviour
 
         if (currentScene.name == "MainScene")
         {
+            // start the timer
             countingDown = true;
+
+            // if the player has purchased the cosmetic, enable it
+            if (hasCosmetic)
+            {
+                
+            }
         }
         // if we are in the proper scene, the counter begins 
         if (countingDown)
@@ -45,14 +56,14 @@ public class GameManager : MonoBehaviour
             remainingSeconds = Countdown();
 
             // if time runs out and quota is not met, game ends
-            if (remainingSeconds == 0 && playerReference.getCurPoints() < playerReference.getQuota() )
+            if (remainingSeconds == 0 && playerReference.getCurPoints() < playerReference.getQuota())
             {
                 // go to game over scene 
                 SceneManager.LoadScene("GameOver");
                 Debug.Log("Scene changed to GameOver");
             }
 
-            else if(remainingSeconds == 0 && playerReference.getCurPoints() >= playerReference.getQuota())
+            else if (remainingSeconds == 0 && playerReference.getCurPoints() >= playerReference.getQuota())
             {
                 // go to the shop scene 
                 SceneManager.LoadScene("ShopScene");

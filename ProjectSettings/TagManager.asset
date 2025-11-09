@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TMP
   - MultButton
+  - Manager
   layers:
   - Default
   - TransparentFX

@@ -19,6 +19,7 @@ public class ShopItem : MonoBehaviour
     public TextMeshProUGUI itemName;
     public TextMeshProUGUI itemCost;
     public TextMeshProUGUI itemDesc;
+    public TextMeshProUGUI funds;
 
     private void Start()
     {
@@ -29,17 +30,17 @@ public class ShopItem : MonoBehaviour
             case "modifier":
                 // pull the upgrade level from player info
                 upgrade_level = playerRef.mod_level;
-                upgrade_cost = math.floor(math.pow(2.71828, upgrade_level-1));
+                upgrade_cost = math.floor(math.pow(2.71828, upgrade_level - 1));
                 break;
             case "crit_bonus":
                 // pull the upgrade level from player info
                 upgrade_level = playerRef.critB_level;
-                upgrade_cost = math.floor(math.pow(2.71828, upgrade_level-1));
+                upgrade_cost = math.floor(math.pow(2.71828, upgrade_level - 1));
                 break;
             case "crit_chance":
                 // pull the upgrade level from player info
                 upgrade_level = playerRef.critC_level;
-                upgrade_cost = math.floor(math.pow(2.71828, upgrade_level-1));
+                upgrade_cost = math.floor(math.pow(2.71828, upgrade_level - 1));
                 break;
             case "cosmetic":
                 // pull the upgrade level from player info
@@ -47,6 +48,8 @@ public class ShopItem : MonoBehaviour
                 break;
             default: break;
         }
+
+        funds.text = "Points : $" + playerRef.getCurPoints() + "\nOvertime : $" + playerRef.getCurOvertime();
     }
 
 
@@ -64,6 +67,7 @@ public class ShopItem : MonoBehaviour
 
             // call function to update attribute in player stats
             playerRef.upgradeStat(upgrade_type, upgrade_level);
+            funds.text = "Points : $" + playerRef.getCurPoints() + "\nOvertime : $" + playerRef.getCurOvertime();
         }
         
         if ((playerRef.getCurOvertime() >= upgrade_cost) && (upgrade_type == "cosmetic") && (upgrade_level == 0))
@@ -78,6 +82,7 @@ public class ShopItem : MonoBehaviour
 
             // call function to update attribute in player stats
             playerRef.upgradeStat(upgrade_type, upgrade_level);
+            funds.text = "Points : $" + playerRef.getCurPoints() + "\nOvertime : $" + playerRef.getCurOvertime();
         }
     }
 

@@ -26,11 +26,11 @@ public class PlayerInfo : MonoBehaviour
     private TextMeshProUGUI quotaTMP;
     private TextMeshProUGUI unpaidTMP;
     private TextMeshProUGUI dayTMP;
+    private GameManager gameManager;
 
     //move the player info object into a folder that will not be destroyed on scene transitions and initialize the SceneLoaded function
     private void Awake()
     {
-        
         DontDestroyOnLoad(this);
         SceneManager.sceneLoaded += SceneLoaded;
     }
@@ -42,6 +42,8 @@ public class PlayerInfo : MonoBehaviour
         // if loading the main game scene, do these actions
         if (SceneManager.GetActiveScene().name == "MainScene")
         {
+            gameManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
+
             dayTMP = GameObject.Find("DayText").GetComponent<TextMeshProUGUI>();
             quotaTMP = GameObject.Find("QuotaText").GetComponent<TextMeshProUGUI>();
             unpaidTMP = GameObject.Find("UnpaidText").GetComponent<TextMeshProUGUI>();
@@ -169,6 +171,7 @@ public class PlayerInfo : MonoBehaviour
             case "cosmetic":
                 cosmetic++;
                 Debug.Log("Purchsaed Cosmetic");
+                gameManager.hasCosmetic = true;
                 break;
             default:
                 // Code to execute if no case matches (optional)
