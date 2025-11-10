@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
         {
             // start the timer
             countingDown = true;
+            hasCosmetic = playerReference.hasCosmetic;
 
             // if the player has purchased the cosmetic, enable it
             if (hasCosmetic)

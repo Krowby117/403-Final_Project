@@ -31,21 +31,25 @@ public class ShopItem : MonoBehaviour
             case "modifier":
                 // pull the upgrade level from player info
                 upgrade_level = playerRef.mod_level;
-                upgrade_cost = math.floor(math.pow(2.71828, upgrade_level - 1));
+                upgrade_cost = System.Math.Max(math.floor(math.pow(2.71828, upgrade_level - 1)) + 1, 1);
                 break;
             case "crit_bonus":
                 // pull the upgrade level from player info
                 upgrade_level = playerRef.critB_level;
-                upgrade_cost = math.floor(math.pow(2.71828, upgrade_level - 1));
+                upgrade_cost = System.Math.Max(math.floor(math.pow(2.71828, upgrade_level - 1)) + 1, 1);
                 break;
             case "crit_chance":
                 // pull the upgrade level from player info
                 upgrade_level = playerRef.critC_level;
-                upgrade_cost = math.floor(math.pow(2.71828, upgrade_level - 1));
+                upgrade_cost = System.Math.Max(math.floor(math.pow(2.71828, upgrade_level - 1)) + 1, 1);
                 break;
             case "cosmetic":
                 // pull the upgrade level from player info
                 upgrade_level = playerRef.critC_level;
+                upgrade_cost = 5;
+                if (upgrade_level > 0) {
+                    upgrade_desc = "Cosmetic already purchased. Limit 1 per worker.";
+                    }
                 break;
             default: break;
         }
@@ -56,14 +60,14 @@ public class ShopItem : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (playerRef.getCurPoints() >= upgrade_cost)
+        if (playerRef.getCurPoints() >= upgrade_cost && !(upgrade_type == "cosmetic"))
         {
             playerRef.setCurPoints(playerRef.getCurPoints() - (int)upgrade_cost);
             Debug.Log("Upgrade purchased: " + upgrade_name + " for $" + upgrade_cost);
 
             // increase upgrade attributes after purchase
             upgrade_level++;
-            upgrade_cost = math.floor(math.pow(2.71828, upgrade_level - 1));
+            upgrade_cost = System.Math.Max(math.floor(math.pow(2.71828, upgrade_level - 1)) + 1, 1);
 
 
             // call function to update attribute in player stats
@@ -78,8 +82,8 @@ public class ShopItem : MonoBehaviour
 
             // increase upgrade attributes after purchase
             upgrade_level++;
-            upgrade_cost = 1000000000;
-            upgrade_desc = "Already purhcased! Limit: 1 per customer.";
+            upgrade_cost = 5;
+            upgrade_desc = "Cosmetic already purchased. Limit 1 per worker.";
 
             // call function to update attribute in player stats
             playerRef.upgradeStat(upgrade_type, upgrade_level);

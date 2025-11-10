@@ -19,6 +19,7 @@ public class PlayerInfo : MonoBehaviour
     private float crit_bonus = 1.5f;
     public int critC_level = 0;
     public int cosmetic = 0;
+    public bool hasCosmetic = false;
     public int mod_level = 0;
     public int critB_level = 0;
     private int modifying = 0;
@@ -180,7 +181,7 @@ public class PlayerInfo : MonoBehaviour
             case "cosmetic":
                 cosmetic++;
                 Debug.Log("Purchsaed Cosmetic");
-                gameManager.hasCosmetic = true;
+                hasCosmetic = true;
                 break;
             default:
                 // Code to execute if no case matches (optional)
